@@ -850,6 +850,20 @@ class RoundRobinChainer(StateBasedChainer):
     """
     pass
 
+class SourceIPBasedChainer(StateBasedChainer):
+    def getNextTarget(self, session):
+        """<method internal="yes">
+        </method>
+        """
+        hash_sum = 0
+        for char_in_ip in session.owner.client_address.pack():
+            hash_sum += ord(char_in_ip)
+
+        target_remote = session.target_address[hash_sum % len(session.target_address)]
+        self.connection_count = self.connection_count + 1
+
+        return (session.target_local, target_remote)
+
 class SideStackChainer(AbstractChainer):
     """
     <class maturity="stable">
