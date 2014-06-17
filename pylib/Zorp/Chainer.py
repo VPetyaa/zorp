@@ -850,6 +850,7 @@ class RoundRobinChainer(StateBasedChainer):
     """
     pass
 
+
 class SourceIPBasedChainer(StateBasedChainer):
     def getNextTarget(self, session):
         """<method internal="yes">
@@ -863,6 +864,37 @@ class SourceIPBasedChainer(StateBasedChainer):
         self.connection_count = self.connection_count + 1
 
         return (session.target_local, target_remote)
+
+
+def call_zorpctl_szig(target_addresses, selected_index):
+    import subprocess
+    return int(subprocess.check_output("zorpctl szig | grep -c '%s'" % target_addresses[selected_index], shell=True))
+
+
+class LeastConnectionChainer(StateBasedChainer):
+
+    def get_index_of_server_with_least_connections(self, target_addresses, szig_function):
+        selected_index = 0
+        least_connections = szig_function(target_addresses, selected_index)
+
+        for i in range(1, len(target_addresses)):
+            connection_number_of_i = szig_function(target_addresses, i)
+            if connection_number_of_i < least_connections:
+                least_connections = connection_number_of_i
+                selected_index = i
+
+        return selected_index
+
+    def getNextTarget(self, session, szig_function=call_zorpctl_szig):
+        """<method internal="yes">
+        </method>
+        """
+
+        target_remote = session.target_address[self.get_index_of_server_with_least_connections(session.target_address, szig_function)]
+        self.connection_count = self.connection_count + 1
+
+        return (session.target_local, target_remote)
+
 
 class SideStackChainer(AbstractChainer):
     """

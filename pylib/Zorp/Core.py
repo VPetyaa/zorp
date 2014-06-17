@@ -39,7 +39,7 @@ from Zone import Zone, InetZone
 from Service import Service, PFService, DenyService, DenyIPv4, DenyIPv6
 from SockAddr import SockAddrInet, SockAddrInetHostname, SockAddrInetRange, SockAddrInet6, SockAddrUnix
 from Router import TransparentRouter, DirectedRouter, InbandRouter
-from Chainer import ConnectChainer, MultiTargetChainer, StateBasedChainer, RoundRobinChainer, FailoverChainer, SideStackChainer
+from Chainer import ConnectChainer, MultiTargetChainer, StateBasedChainer, RoundRobinChainer, FailoverChainer, SideStackChainer, SourceIPBasedChainer, LeastConnectionChainer
 from Subnet import InetSubnet, InetDomain, Inet6Subnet
 from Listener import Listener, ZoneListener, CSZoneListener
 from Dispatch import Dispatcher, ZoneDispatcher, CSZoneDispatcher, RuleDispatcher
