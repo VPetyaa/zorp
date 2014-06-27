@@ -656,6 +656,8 @@ MODULES_CPPFLAGS
 MODULES_LIBS
 LIBPROXY_CPPFLAGS
 ZORP_LIBS
+TRE_LIBS
+TRE_CFLAGS
 LIBZORP_LIBS
 PCAP_LIBS
 UUID_CLAGS
@@ -683,8 +685,6 @@ ZORP_PROC
 zorp_srcdir
 ALERTING_ENABLED_FALSE
 ALERTING_ENABLED_TRUE
-TRE_LIBS
-TRE_CFLAGS
 PYTHON_LIBS
 PYTHON_CFLAGS
 OPENSSL_LIBS
@@ -882,9 +882,7 @@ ZORPLL_LIBS
 OPENSSL_CFLAGS
 OPENSSL_LIBS
 PYTHON_CFLAGS
-PYTHON_LIBS
-TRE_CFLAGS
-TRE_LIBS'
+PYTHON_LIBS'
 
 
 # Initialize some variables set by options.
@@ -1569,8 +1567,6 @@ Some influential environment variables:
   PYTHON_CFLAGS
               C compiler flags for PYTHON, overriding pkg-config
   PYTHON_LIBS linker flags for PYTHON, overriding pkg-config
-  TRE_CFLAGS  C compiler flags for TRE, overriding pkg-config
-  TRE_LIBS    linker flags for TRE, overriding pkg-config
 
 Use these variables to override the choices made by `configure' or to help
 it to find libraries and programs with nonstandard names/locations.
@@ -17592,77 +17588,8 @@ $as_echo "yes" >&6; }
 
 fi
 
-
-pkg_failed=no
-{ $as_echo "$as_me:${as_lineno-$LINENO}: checking for TRE" >&5
-$as_echo_n "checking for TRE... " >&6; }
-
-if test -n "$TRE_CFLAGS"; then
-    pkg_cv_TRE_CFLAGS="$TRE_CFLAGS"
- elif test -n "$PKG_CONFIG"; then
-    if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"tre >= \$TRE_MIN_VERSION\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "tre >= $TRE_MIN_VERSION") 2>&5
-  ac_status=$?
-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
-  test $ac_status = 0; }; then
-  pkg_cv_TRE_CFLAGS=`$PKG_CONFIG --cflags "tre >= $TRE_MIN_VERSION" 2>/dev/null`
-		      test "x$?" != "x0" && pkg_failed=yes
-else
-  pkg_failed=yes
-fi
- else
-    pkg_failed=untried
-fi
-if test -n "$TRE_LIBS"; then
-    pkg_cv_TRE_LIBS="$TRE_LIBS"
- elif test -n "$PKG_CONFIG"; then
-    if test -n "$PKG_CONFIG" && \
-    { { $as_echo "$as_me:${as_lineno-$LINENO}: \$PKG_CONFIG --exists --print-errors \"tre >= \$TRE_MIN_VERSION\""; } >&5
-  ($PKG_CONFIG --exists --print-errors "tre >= $TRE_MIN_VERSION") 2>&5
-  ac_status=$?
-  $as_echo "$as_me:${as_lineno-$LINENO}: \$? = $ac_status" >&5
-  test $ac_status = 0; }; then
-  pkg_cv_TRE_LIBS=`$PKG_CONFIG --libs "tre >= $TRE_MIN_VERSION" 2>/dev/null`
-		      test "x$?" != "x0" && pkg_failed=yes
-else
-  pkg_failed=yes
-fi
- else
-    pkg_failed=untried
-fi
-
-
-
-if test $pkg_failed = yes; then
-   	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
-$as_echo "no" >&6; }
-
-if $PKG_CONFIG --atleast-pkgconfig-version 0.20; then
-        _pkg_short_errors_supported=yes
-else
-        _pkg_short_errors_supported=no
-fi
-        if test $_pkg_short_errors_supported = yes; then
-	        TRE_PKG_ERRORS=`$PKG_CONFIG --short-errors --print-errors --cflags --libs "tre >= $TRE_MIN_VERSION" 2>&1`
-        else
-	        TRE_PKG_ERRORS=`$PKG_CONFIG --print-errors --cflags --libs "tre >= $TRE_MIN_VERSION" 2>&1`
-        fi
-	# Put the nasty error message in config.log where it belongs
-	echo "$TRE_PKG_ERRORS" >&5
-
-	as_fn_error $? "Cannot find TRE regexp matching library version >= $TRE_MIN_VERSION: is pkg-config in path?" "$LINENO" 5
-elif test $pkg_failed = untried; then
-     	{ $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
-$as_echo "no" >&6; }
-	as_fn_error $? "Cannot find TRE regexp matching library version >= $TRE_MIN_VERSION: is pkg-config in path?" "$LINENO" 5
-else
-	TRE_CFLAGS=$pkg_cv_TRE_CFLAGS
-	TRE_LIBS=$pkg_cv_TRE_LIBS
-        { $as_echo "$as_me:${as_lineno-$LINENO}: result: yes" >&5
-$as_echo "yes" >&6; }
-
-fi
+#PKG_CHECK_MODULES(TRE, tre >= $TRE_MIN_VERSION,,
+#        AC_MSG_ERROR(Cannot find TRE regexp matching library version >= $TRE_MIN_VERSION: is pkg-config in path?))
 
 
 
