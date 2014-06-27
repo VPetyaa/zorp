@@ -40,18 +40,19 @@ build-stamp:
 debfiles: debfiles-stamp
 
 debfiles-stamp:
-	echo -n "" > debian/zorp-modules.conffiles
-	echo -n "" > debian/zorp-modules.files
-	for i in `cat module.list` x; do \
-		if test "$$i" != "x"; then \
-			if test -r modules/$$i/debian/zorp-pro-modules.files; then \
-				cat modules/$$i/debian/zorp-pro-modules.files >> debian/zorp-modules.files; \
-			fi; \
-			if test -r modules/$$i/debian/zorp-pro-modules.conffiles; then \
-				cat modules/$$i/debian/zorp-pro-modules.conffiles >> debian/zorp-modules.conffiles; \
-			fi; \
-		fi; \
-	done;
+	./autogen.sh
+	# echo -n "" > debian/zorp-modules.conffiles
+	# echo -n "" > debian/zorp-modules.files
+	# for i in `cat module.list` x; do \
+	#	if test "$$i" != "x"; then \
+	#		if test -r modules/$$i/debian/zorp-pro-modules.files; then \
+	#			cat modules/$$i/debian/zorp-pro-modules.files >> debian/zorp-modules.files; \
+	#		fi; \
+	#		if test -r modules/$$i/debian/zorp-pro-modules.conffiles; then \
+	#			cat modules/$$i/debian/zorp-pro-modules.conffiles >> debian/zorp-modules.conffiles; \
+	#		fi; \
+	#	fi; \
+	#done;
 	touch debfiles-stamp
 
 clean:

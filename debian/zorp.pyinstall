@@ -12,7 +12,6 @@ pylib/Zorp/FileLock.py Zorp
 pylib/Zorp/Listener.py Zorp
 pylib/Zorp/Matcher.py Zorp
 pylib/Zorp/NAT.py Zorp
-pylib/Zorp/Notification.py Zorp
 pylib/Zorp/Proxy.py Zorp
 pylib/Zorp/Pssl.py Zorp
 pylib/Zorp/Receiver.py Zorp

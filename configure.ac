@@ -252,11 +252,11 @@ PKG_CHECK_MODULES(ZORPLL, zorplibll >= $ZORPLL_MIN_VERSION,,
 PKG_CHECK_MODULES(OPENSSL, openssl >= $OPENSSL_MIN_VERSION,,
         AC_MSG_ERROR(Cannot find OpenSSL library version >= $OPENSSL_MIN_VERSION: is pkg-config in path?))
 
-PKG_CHECK_MODULES(PYTHON, python2 >= $PYTHON_MIN_VERSION,,
+PKG_CHECK_MODULES(PYTHON, python >= $PYTHON_MIN_VERSION,,
 	AC_MSG_ERROR(Cannot find Python library version >= $PYTHON_MIN_VERSION: is pkg-config in path?))
 
-#PKG_CHECK_MODULES(TRE, tre >= $TRE_MIN_VERSION,,
-#        AC_MSG_ERROR(Cannot find TRE regexp matching library version >= $TRE_MIN_VERSION: is pkg-config in path?))
+dnl PKG_CHECK_MODULES(TRE, tre >= $TRE_MIN_VERSION,,
+dnl        AC_MSG_ERROR(Cannot find TRE regexp matching library version >= $TRE_MIN_VERSION: is pkg-config in path?))
 
 
 
