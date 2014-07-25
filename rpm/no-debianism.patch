@@ -1,0 +1,51 @@
+From 476d54dc9eccc82b42f782d71fb2a1a57b6af00a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?P=C3=A9ter=20V=C3=B6r=C3=B6s?= <vpetyaa@gmail.com>
+Date: Fri, 27 Jun 2014 21:47:39 +0200
+Subject: [PATCH] no-debianism
+
+---
+ debian/rules            | 2 +-
+ pylib/kzorp/Makefile.am | 2 +-
+ pylib/kzorp/Makefile.in | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/debian/rules b/debian/rules
+index de57c43..9a1853f 100755
+--- a/debian/rules
++++ b/debian/rules
+@@ -76,7 +76,7 @@ install: build
+ 	# Add here commands to install the package into debian/tmp.
+ 	$(MAKE) install DESTDIR=`pwd`/debian/tmp/
+ 	dh_movefiles
+-	(cd pylib/kzorp && python2.7 setup.py install --prefix ../../debian/python-kzorp/usr --install-layout=deb)
++	(cd pylib/kzorp && python2.7 setup.py install --prefix ../../debian/python-kzorp/usr)
+ 
+ # Build architecture-independent files here.
+ binary-indep: build install
+diff --git a/pylib/kzorp/Makefile.am b/pylib/kzorp/Makefile.am
+index 450c055..5634912 100644
+--- a/pylib/kzorp/Makefile.am
++++ b/pylib/kzorp/Makefile.am
+@@ -7,5 +7,5 @@ clean:
+ distclean: clean
+ 
+ install-exec-local:
+-	$(PYTHON) $(top_srcdir)/pylib/kzorp/setup.py install --prefix $(DESTDIR)/$(prefix) --install-layout=deb
++	$(PYTHON) $(top_srcdir)/pylib/kzorp/setup.py install --prefix $(DESTDIR)/$(prefix)
+ 
+diff --git a/pylib/kzorp/Makefile.in b/pylib/kzorp/Makefile.in
+index 418ac23..09ac25e 100644
+--- a/pylib/kzorp/Makefile.in
++++ b/pylib/kzorp/Makefile.in
+@@ -679,7 +679,7 @@ clean:
+ distclean: clean
+ 
+ install-exec-local:
+-	$(PYTHON) $(top_srcdir)/pylib/kzorp/setup.py install --prefix $(DESTDIR)/$(prefix) --install-layout=deb
++	$(PYTHON) $(top_srcdir)/pylib/kzorp/setup.py install --prefix $(DESTDIR)/$(prefix)
+ 
+ # Tell versions [3.59,3.63) of GNU make to not export all variables.
+ # Otherwise a system limit (for SysV at least) may be exceeded.
+-- 
+1.9.1
+
