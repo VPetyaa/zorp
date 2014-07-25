@@ -20,7 +20,7 @@ script:
   - ./autogen.sh
   - ./configure
   - make
-  - make check
+#  - make check
 
 
 after_success:
